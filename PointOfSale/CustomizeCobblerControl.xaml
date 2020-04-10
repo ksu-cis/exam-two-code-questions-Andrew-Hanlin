@@ -1,4 +1,5 @@
-﻿<UserControl x:Class="ExamTwoQuestions.PointOfSale.CustomizeCobblerControl"
+﻿
+<UserControl x:Class="ExamTwoQuestions.PointOfSale.CustomizeCobblerControl"k
              xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
@@ -7,6 +8,73 @@
              mc:Ignorable="d" 
              d:DesignHeight="450" d:DesignWidth="800">
     <Grid>
-        <TextBlock>Customize Cobbler</TextBlock>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="1*"/>
+            <RowDefinition Height="1.5*"/>
+            <RowDefinition Height="2*"/>
+            
+
+        </Grid.RowDefinitions>
+
+        <Label Name="cobbler" Content="Cobbler Slector" Grid.Row="0" FontSize="60" HorizontalAlignment="Center" />
+
+        <CheckBox        Name="WithIceCreamBox"
+                         HorizontalAlignment="Center"
+              Grid.Row="1"
+              Content="With Ice Cream"
+              FontSize="6"
+              IsChecked="{Binding Path=WithIcecream}">
+            <CheckBox.LayoutTransform>
+                <ScaleTransform ScaleX="10" ScaleY="10"/>
+            </CheckBox.LayoutTransform>
+           
+        
+        </CheckBox>
+        <Grid Grid.Row=" 2" HorizontalAlignment="Center" >
+            <Grid.RowDefinitions>
+                <RowDefinition/>
+                <RowDefinition/>
+               <RowDefinition/>
+               <RowDefinition/>
+            </Grid.RowDefinitions>
+
+            
+            <Label Content="Fruit Filling Selection" HorizontalAlignment="Center" FontSize="30"/>
+
+            <RadioButton x:Name="CherryFlavor" 
+                     Grid.Row="1" 
+                     Content="Cherry Filling"
+                     GroupName="flavor" 
+                     Click="FruitButton_Checked"
+                      >
+                <RadioButton.LayoutTransform>
+                    <ScaleTransform ScaleX="3" ScaleY="2"/>
+                </RadioButton.LayoutTransform>
+            </RadioButton>
+
+
+            <RadioButton x:Name="PeachFlavor" 
+                     Grid.Row="2"
+                         GroupName="flavor" 
+                     Content="Peach Filling"
+                     Click="FruitButton_Checked">
+                <RadioButton.LayoutTransform>
+                    <ScaleTransform ScaleX="3" ScaleY="2"/>
+                </RadioButton.LayoutTransform>
+            </RadioButton>
+
+
+            <RadioButton x:Name="BlueFlavor" 
+                     Grid.Row="3"
+                     GroupName="flavor" 
+                     Content="Blueberry Filling"
+                     Click="FruitButton_Checked">
+                <RadioButton.LayoutTransform>
+                    <ScaleTransform ScaleX="3" ScaleY="2"/>
+                </RadioButton.LayoutTransform>
+            </RadioButton>
+        </Grid>
+
     </Grid>
+
 </UserControl>

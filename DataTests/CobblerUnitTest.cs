@@ -1,6 +1,8 @@
 using System;
 using ExamTwoCodeQuestions.Data;
 using Xunit;
+using System.ComponentModel;
+
 
 namespace ExamTwoCodeQuestions.DataTests
 {
@@ -71,6 +73,45 @@ namespace ExamTwoCodeQuestions.DataTests
         {
             var cobbler = new Cobbler();
             Assert.IsAssignableFrom<IOrderItem>(cobbler);
+        }
+        [Fact]
+        public void CobblerImplementsINotifyPropertyChanged()
+        {
+            var cobler = new Cobbler();
+            Assert.IsAssignableFrom<INotifyPropertyChanged>(cobler);
+        }
+        [Fact]
+        public void ChanginFruitPropertyShouldInvokePropertyChangedForCobbler()
+        {
+            var cobler = new Cobbler();
+            Assert.PropertyChanged(cobler, "Fruit", () => {
+                cobler.Fruit = FruitFilling.Cherry ;
+            });
+        }
+        [Fact]
+        public void ChangingWithIceCreamPropertyShouldInvokePropertyChangedForCobler()
+        {
+            var cobler = new Cobbler();
+            Assert.PropertyChanged(cobler, "WithIceCream", () => {
+                cobler.WithIceCream = false;
+            });
+        }
+
+        [Fact]
+        public void ChangingFruitrPropertyShouldInvokePropertyChangedForInstructions()
+        {
+            var cobler = new Cobbler();
+            Assert.PropertyChanged(cobler, "SpecialInstructions", () => {
+                cobler.Fruit = FruitFilling.Cherry;
+            });
+        }
+        [Fact]
+        public void ChangingWithIceCreamPropertyShouldInvokePropertyChangedFoInstructions()
+        {
+            var cobler = new Cobbler();
+            Assert.PropertyChanged(cobler, "SpecialInstructions", () => {
+                cobler.WithIceCream = false;
+            });
         }
     }
 }

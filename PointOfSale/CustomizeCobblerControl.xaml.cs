@@ -11,6 +11,9 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 
+using ExamTwoCodeQuestions.Data;
+using FruitFlavor = ExamTwoCodeQuestions.Data.FruitFilling;
+
 namespace ExamTwoQuestions.PointOfSale
 {
     /// <summary>
@@ -21,6 +24,43 @@ namespace ExamTwoQuestions.PointOfSale
         public CustomizeCobblerControl()
         {
             InitializeComponent();
+        }
+
+        private void WithIceCreamBox_Checked(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void FruitButton_Checked(object sender, RoutedEventArgs e)
+        {
+            FruitFlavor flavor=FruitFlavor.Cherry;
+
+            switch (((RadioButton)sender).Name)
+            {
+                case "CherryFlavor":
+                    flavor = FruitFlavor.Cherry;
+                    break;
+                case "PeachFlavor":
+                    flavor = FruitFlavor.Peach;
+                    break;
+                case "BlueFlavor":
+                    flavor = FruitFlavor.Blueberry;
+                    break;
+                default:
+                    flavor = FruitFlavor.Cherry;
+                    break;
+
+            }
+            if (DataContext is Cobbler)
+            {
+                Cobbler c = (Cobbler)DataContext;
+                c.Fruit = flavor;
+            }
+            else
+            {
+                throw new NotImplementedException("Only Jerked soda should be the datacontext");
+            }
+
         }
     }
 }
